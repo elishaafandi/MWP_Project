@@ -1,1 +1,23 @@
-<p>endangered-animal-page works!</p>
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error">{{ error }}</div>
+
+<div *ngIf="!loading && !error && threatenedSpecies.length > 0">
+  <div *ngFor="let species of threatenedSpecies" class="species-card">
+    <h3>{{ species.preferred_common_name || species.name }}</h3>
+    
+    <img *ngIf="species?.default_photo?.medium_url" 
+         [src]="species.default_photo?.medium_url" 
+         alt="{{ species?.name }}">
+    
+    <p><strong>Scientific Name:</strong> {{ species.name }}</p>
+    <p>
+  <strong>Conservation Status:</strong>
+  {{ getConservationStatusFull(species.conservation_status?.status) }}
+</p>
+    
+  </div>
+</div>
+
+<div *ngIf="!loading && !error && threatenedSpecies.length === 0">
+  <p>No threatened species found. Try a different query or check again later.</p>
+</div>
