@@ -1,0 +1,23 @@
+<div class="intro" *ngIf="!quizStarted && !showResult">
+  <h1>Are you ready to know your inner animal?</h1>
+  <button (click)="startQuiz()">Start Quiz</button>
+</div>
+
+<div class="quiz-container" *ngIf="quizStarted && !showResult">
+  <h2>Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</h2>
+  <div class="question-card">
+    <h3>{{ questions[currentQuestionIndex].question }}</h3>
+    <div class="options">
+      <button *ngFor="let opt of questions[currentQuestionIndex].options" (click)="selectAnswer(opt.value)">
+        {{ opt.answer }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="result-container" *ngIf="showResult">
+  <h2>You are a {{ result?.animal }}!</h2>
+  <img [src]="result?.image" [alt]="result?.animal" />
+  <p>{{ result?.description }}</p>
+  <button (click)="restartQuiz()">Retake Quiz</button>
+</div>
