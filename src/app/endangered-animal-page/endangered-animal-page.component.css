@@ -1,0 +1,107 @@
+/* Center all content */
+.species-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* horizontally center */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Container for species cards */
+.species-card {
+  width: 300px;                 /* or whatever width you like */
+  height: 450px;                /* fixed height for card */
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 16px;
+  margin: 12px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  overflow: hidden;
+  align-items: center;
+}
+
+.species-card img {
+  width: 100%;
+  height: 200px;                /* fixed image height */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+.species-card:hover {
+  transform: scale(1.03);
+}
+
+/* Image styling */
+.species-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text */
+.species-card h3 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.species-card p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Wikipedia link */
+.species-card a {
+  display: inline-block;
+  margin-top: 8px;
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.species-card a:hover {
+  text-decoration: underline;
+}
+
+/* Conservation Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: white;
+  margin-top: 5px;
+}
+
+/* Colors based on conservation status */
+.status-cr {
+  background-color: #e53935; /* red */
+}
+
+.status-en {
+  background-color: #fb8c00; /* orange */
+}
+
+.status-vu {
+  background-color: #fdd835; /* yellow */
+  color: black;
+}
+
+.status-nt {
+  background-color: #43a047; /* green */
+}
+
+.status-lc {
+  background-color: #1e88e5; /* blue */
+}
+
+.status-unknown {
+  background-color: #9e9e9e; /* grey */
+}

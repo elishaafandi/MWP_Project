@@ -2,20 +2,26 @@
 <div *ngIf="error">{{ error }}</div>
 
 <div *ngIf="!loading && !error && threatenedSpecies.length > 0">
+  <div class="species-grid">
   <div *ngFor="let species of threatenedSpecies" class="species-card">
     <h3>{{ species.preferred_common_name || species.name }}</h3>
-    
     <img *ngIf="species?.default_photo?.medium_url" 
          [src]="species.default_photo?.medium_url" 
          alt="{{ species?.name }}">
-    
     <p><strong>Scientific Name:</strong> {{ species.name }}</p>
     <p>
   <strong>Conservation Status:</strong>
-  {{ getConservationStatusFull(species.conservation_status?.status) }}
+  <span
+    class="status-badge"
+    [ngClass]="'status-' + (species.conservation_status?.status?.toLowerCase() || 'unknown')"
+  >
+    {{ getConservationStatusFull(species.conservation_status?.status) }}
+  </span>
 </p>
-    
+
   </div>
+</div>
+
 </div>
 
 <div *ngIf="!loading && !error && threatenedSpecies.length === 0">
