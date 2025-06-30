@@ -1,28 +1,16 @@
-/* app.component.css - Global App Styles */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #faf9f7 0%, #f5f3ef 100%);
-  min-height: 100vh;
-  color: #2c2c2c;
-}
-
-/* App Header */
+/* Updated App Header Styles */
 .app-header {
-  background: #1a1a1a;
+  background: #2d5a4b;
   padding: 20px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-  position: relative;
 }
 
 .brand-container {
@@ -31,7 +19,7 @@ body {
 }
 
 .brand-logo {
-  height: 45px;
+  height: 65px;
   margin-right: 15px;
 }
 
@@ -41,81 +29,196 @@ body {
   font-weight: 600;
   color: #ffffff;
   margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
 .nav-links a {
   font-family: 'Poppins', sans-serif;
-  margin-left: 30px;
   text-decoration: none;
   color: #ffffff;
   font-weight: 500;
   font-size: 1rem;
-  padding: 12px 0;
-  border-radius: 0;
+  padding: 12px 20px;
+  border-radius: 25px;
   transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   position: relative;
-  border-bottom: 2px solid transparent;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 8px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(45deg, #D2691E, #CD853F);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
-  width: 100%;
-}
-
-.nav-links a:hover,
 .nav-links a.active {
-  color: #D2691E;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Main Content */
-.main-content {
-  padding: 60px 20px;
-  min-height: calc(100vh - 200px);
-}
-
-/* Footer */
-.app-footer {
-  background: #1a1a1a;
-  text-align: center;
-  padding: 30px;
-  color: #ffffff;
-  font-size: 0.9rem;
-  margin-top: 4rem;
+/* Update body and app-root to accommodate transparent header */
+body {
   font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, 
+    #2d9688 0%, 
+    #4db8a8 25%, 
+    #f4a261 50%, 
+    #e76f51 75%, 
+    #2d9688 100%
+  );
+  color: #2c2c2c;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+app-root {
+  display: block;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* Add organic background shapes to body */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(244, 162, 97, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(45, 150, 136, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 40% 70%, rgba(231, 111, 81, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(77, 184, 168, 0.3) 0%, transparent 50%);
+  z-index: -2;
+  animation: backgroundShift 20s ease-in-out infinite;
+}
+
+/* Add floating organic shapes */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30C13.431 60 0 46.569 0 30 0 13.431 13.431 0 30 0z' fill='%23f4a261' fill-opacity='0.1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0c11.046 0 20 8.954 20 20s-8.954 20-20 20S0 31.046 0 20 8.954 0 20 0z' fill='%232d9688' fill-opacity='0.1'/%3E%3C/svg%3E");
+  background-position: 0 0, 30px 30px;
+  background-size: 120px 120px, 80px 80px;
+  z-index: -1;
+  animation: floatPattern 30s linear infinite;
+}
+
+/* Main content adjustment for fixed header */
+.main-content {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+/* Homepage Container */
+.homepage-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  padding-top: 89px; /* Add padding to account for fixed header */
+}
+
+/* Update hero section to account for header */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 4rem 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Animations */
+@keyframes backgroundShift {
+  0%, 100% { 
+    transform: translateX(0) translateY(0);
+  }
+  25% { 
+    transform: translateX(-20px) translateY(-10px);
+  }
+  50% { 
+    transform: translateX(20px) translateY(10px);
+  }
+  75% { 
+    transform: translateX(-10px) translateY(20px);
+  }
+}
+
+@keyframes floatPattern {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-120px) translateY(-80px);
+  }
 }
 
 /* Responsive Design for Header */
 @media (max-width: 768px) {
   .app-header {
-    padding: 20px;
+    padding: 15px 20px;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    position: relative;
+    background: #2d5a4b;
   }
   
   .brand-name {
     font-size: 1.8rem;
   }
-
+  
   .nav-links {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 30px;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+  
+  .homepage-container {
+    padding-top: 140px; /* Adjust for mobile header height */
+  }
+  
+  .hero-section {
+    padding: 20px 1rem 0;
+  }
 }
 
+@media (max-width: 480px) {
+  .nav-links {
+    gap: 10px;
+  }
+  
+  .nav-links a {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
 }
