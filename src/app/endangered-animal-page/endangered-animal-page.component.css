@@ -1,107 +1,191 @@
-/* Center all content */
-.species-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* horizontally center */
-  gap: 20px;
-  padding: 20px;
+.container {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
 }
 
-/* Container for species cards */
-.species-card {
-  width: 300px;                 /* or whatever width you like */
-  height: 450px;                /* fixed height for card */
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 16px;
-  margin: 12px;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #fff;
-  overflow: hidden;
-  align-items: center;
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
-.species-card img {
+.card {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card img {
   width: 100%;
-  height: 200px;                /* fixed image height */
+  height: 180px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
-
-.species-card:hover {
-  transform: scale(1.03);
+.status {
+  font-weight: bold;
+  color: darkred;
 }
 
-/* Image styling */
-.species-card img {
+/* Popup styles */
+.popup-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  z-index: 11;
+  animation: popupFadeIn 0.3s ease-in-out;
+}
+
+.popup img {
   width: 100%;
   height: auto;
   border-radius: 8px;
 }
 
-/* Text */
-.species-card h3 {
-  margin-top: 10px;
-  font-size: 1.2rem;
-  color: #333;
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 18px;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
-.species-card p {
-  margin: 6px 0;
-  font-size: 0.95rem;
-  color: #555;
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
 
-/* Wikipedia link */
-.species-card a {
-  display: inline-block;
-  margin-top: 8px;
-  color: #0077cc;
-  text-decoration: none;
-  font-weight: bold;
+
+.how-to-help {
+  margin-top: 3rem;
+  text-align: center;
 }
 
-.species-card a:hover {
-  text-decoration: underline;
+.tips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5rem;;
+  margin-top: 2rem;
 }
 
-/* Conservation Status Badge */
-.status-badge {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: bold;
+.tip-card {
+  width: 220px;
+  height: 260px;
+  perspective: 1000px;
+  margin-inline: 0.5rem;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.tip-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.background-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
   color: white;
-  margin-top: 5px;
+  text-align: center;
+  z-index: 2;
 }
 
-/* Colors based on conservation status */
-.status-cr {
-  background-color: #e53935; /* red */
+.overlay h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
 }
 
-.status-en {
-  background-color: #fb8c00; /* orange */
+.card-front h3 {
+  font-size: 1.2rem;
 }
 
-.status-vu {
-  background-color: #fdd835; /* yellow */
-  color: black;
+.card-back {
+  transform: rotateY(180deg);
+  font-size: 0.9rem;
+  padding: 1rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.8); 
+  text-align: left;
+  display: block; 
+  text-align: center;
 }
 
-.status-nt {
-  background-color: #43a047; /* green */
+
+.card-back p {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
-.status-lc {
-  background-color: #1e88e5; /* blue */
-}
-
-.status-unknown {
-  background-color: #9e9e9e; /* grey */
-}
