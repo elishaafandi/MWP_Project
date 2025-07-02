@@ -1,3 +1,4 @@
+<!-- Container holds the main content only -->
 <div class="container">
   <h1>Top 10 Endangered Species</h1>
 
@@ -5,79 +6,126 @@
   <div *ngIf="error">{{ error }}</div>
 
   <div class="cards">
-    <div class="card" *ngFor="let species of threatenedSpecies" (click)="openPopup(species)">
-      <img [src]="species.default_photo?.medium_url || 'assets/placeholder.jpg'" alt="{{ species.preferred_common_name || species.name }}" />
+    <div
+      class="card"
+      *ngFor="let species of threatenedSpecies"
+      (click)="openPopup(species)"
+    >
+      <img
+        [src]="species.default_photo?.medium_url || 'assets/placeholder.jpg'"
+        alt="{{ species.preferred_common_name || species.name }}"
+      />
       <h2>{{ species.preferred_common_name || species.name }}</h2>
-      <p class="status">{{ getConservationStatusFull(species.conservation_status?.status) }}</p>
+      <span
+        class="badge"
+        [ngClass]="getStatusClass(species.conservation_status?.status || '')"
+      >
+        {{ getConservationStatusFull(species.conservation_status?.status) }}
+      </span>
     </div>
   </div>
 
-  <!-- Popup Modal -->
-  <div class="popup-backdrop" *ngIf="selectedSpecies" (click)="closePopup()"></div>
-  <div class="popup" *ngIf="selectedSpecies">
-    <button class="close-btn" (click)="closePopup()">✖</button>
-    <img [src]="selectedSpecies.default_photo?.medium_url || 'assets/placeholder.jpg'" alt="Photo" />
-    <h2>{{ selectedSpecies.preferred_common_name || selectedSpecies.name }}</h2>
-    <p><strong>Scientific Name:</strong> {{ selectedSpecies.name }}</p>
-    <p><strong>Conservation Status:</strong> {{ getConservationStatusFull(selectedSpecies.conservation_status?.status) }}</p>
-    <p><strong>Taxon Group:</strong> {{ selectedSpecies.iconic_taxon_name || 'N/A' }}</p>
-    <p *ngIf="selectedSpecies.wikipedia_url">
-      <a [href]="selectedSpecies.wikipedia_url" target="_blank">View on Wikipedia</a>
-    </p>
-    <div id="map" style="height: 300px; width: 100%;" *ngIf="selectedLocation"></div>
+  <hr />
+
+  <div class="how-to-help">
+    <h2>How to Help</h2>
+
+    <div class="tips">
+      <div class="tip-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img
+              class="background-img"
+              src="/images/orangutan.png"
+              alt="Protect Orangutan"
+            />
+            <div class="overlay">
+              <h3>Protect Their Homes</h3>
+            </div>
+          </div>
+          <div class="card-back">
+            <p>Rangers protecting the forest from illegal logging.</p>
+            <p>
+              <em>Tip:</em> Support sustainable palm oil & reforestation
+              efforts.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img
+              class="background-img"
+              src="/images/rangers.png"
+              alt="Protect Orangutan"
+            />
+            <div class="overlay">
+              <h3>Support Anti-Poaching Units</h3>
+            </div>
+          </div>
+          <div class="card-back">
+            <p>Gorillas and rhinos are heavily targeted by poachers.</p>
+            <p>
+              <em>Tip:</em> Donate or raise awareness for wildlife protection
+              units.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img
+              class="background-img"
+              src="/images/tigerspaw.png"
+              alt="Protect Orangutan"
+            />
+            <div class="overlay">
+              <h3>Say No to Wildlife Products</h3>
+            </div>
+          </div>
+          <div class="card-back">
+            <p>Illegal wildlife trade threatens tigers and rhinos.</p>
+            <p>
+              <em>Tip:</em> Never buy products made from animal parts, like
+              tiger bone wine or rhino horn.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<hr />
+<!-- POPUP placed OUTSIDE the container -->
+<div
+  class="popup-backdrop"
+  *ngIf="selectedSpecies"
+  (click)="closePopup()"
+></div>
 
-<div class="how-to-help">
-  <h2>How to Help</h2>
-
-  <div class="tips">
-    <div class="tip-card">
-      <div class="card-inner">
-        <div class="card-front">
-          <img class="background-img" src="/images/orangutan.png" alt="Protect Orangutan" />
-          <div class="overlay">
-            <h3>Protect Their Homes</h3>
-          </div>
-        </div>
-        <div class="card-back">
-          <p>Rangers protecting the forest from illegal logging.</p>
-          <p><em>Tip:</em> Support sustainable palm oil & reforestation efforts.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="tip-card">
-      <div class="card-inner">
-        <div class="card-front">
-          <img class="background-img" src="/images/rangers.png" alt="Protect Orangutan" />
-          <div class="overlay">
-            <h3>Support Anti-Poaching Units</h3>
-          </div>
-        </div>
-        <div class="card-back">
-          <p>Gorillas and rhinos are heavily targeted by poachers.</p>
-          <p><em>Tip:</em> Donate or raise awareness for wildlife protection units.</p>
-        </div>
-      </div>
-    </div>
-
-  <div class="tip-card">
-      <div class="card-inner">
-        <div class="card-front">
-          <img class="background-img" src="/images/tigerspaw.png" alt="Protect Orangutan" />
-          <div class="overlay">
-            <h3>Say No to Wildlife Products</h3>
-          </div>
-        </div>
-        <div class="card-back">
-          <p>Illegal wildlife trade threatens tigers and rhinos.</p>
-          <p><em>Tip:</em> Never buy products made from animal parts, like tiger bone wine or rhino horn.</p>
-        </div>
-      </div>
-    </div>
-
-
+<div class="popup" *ngIf="selectedSpecies">
+  <button class="close-btn" (click)="closePopup()">✖</button>
+  <img
+    [src]="selectedSpecies.default_photo?.medium_url || 'assets/placeholder.jpg'"
+    alt="Photo"
+  />
+  <h2>
+    {{ selectedSpecies.preferred_common_name || selectedSpecies.name }}
+  </h2>
+  <p><strong>Scientific Name:</strong> {{ selectedSpecies.name }}</p>
+  <p>
+    <strong>Conservation Status:</strong>
+    {{ getConservationStatusFull(selectedSpecies.conservation_status?.status) }}
+  </p>
+  <p><strong>Taxon Group:</strong> {{ selectedSpecies.iconic_taxon_name || 'N/A' }}</p>
+  <p *ngIf="selectedSpecies.wikipedia_url">
+    <a [href]="selectedSpecies.wikipedia_url" target="_blank"
+      >View on Wikipedia</a
+    >
+  </p>
+  <div id="map" style="height: 300px; width: 100%" *ngIf="selectedLocation"></div>
 </div>

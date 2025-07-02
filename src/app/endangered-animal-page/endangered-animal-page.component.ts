@@ -65,6 +65,35 @@ export class EndangeredAnimalPageComponent implements OnInit {
     return conservationStatusMap[statusCode.toLowerCase()] || statusCode;
   }
 
+  getStatusClass(status: string): string {
+  switch (status?.toLowerCase()) {
+    case 'lc':
+    case 'least_concern':
+      return 'least-concern';
+    case 'nt':
+    case 'near_threatened':
+      return 'near-threatened';
+    case 'vu':
+    case 'vulnerable':
+      return 'vulnerable';
+    case 'en':
+    case 'endangered':
+      return 'endangered';
+    case 'cr':
+    case 'critically_endangered':
+      return 'critically-endangered';
+    case 'ew':
+    case 'extinct_in_the_wild':
+      return 'extinct-in-wild';
+    case 'ex':
+    case 'extinct':
+      return 'extinct';
+    default:
+      return 'unknown';
+  }
+}
+
+
   openPopup(species: Species): void {
     this.selectedSpecies = species;
   }
