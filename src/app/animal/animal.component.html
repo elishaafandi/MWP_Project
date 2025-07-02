@@ -1,1 +1,140 @@
-<p>animal works!</p>
+<div class="container">
+  <div class="container-how-to-help">
+    <div class="animal-search-container">
+      <h2>🐾 Discover Amazing Animals</h2>
+      
+      <!-- Search Bar -->
+      <div class="search-wrapper">
+        <input 
+          [(ngModel)]="animalName" 
+          placeholder="Enter animal name (e.g., lion, elephant, tiger)..." 
+          (keyup.enter)="search()"
+          class="search-input"
+        />
+        <button (click)="search()" class="search-btn" [disabled]="loading">
+          <span *ngIf="!loading">🔍 Search</span>
+          <span *ngIf="loading">⏳ Searching...</span>
+        </button>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="filter-container">
+        <button 
+          *ngFor="let filter of filters" 
+          (click)="setFilter(filter.value)"
+          [class]="'filter-btn ' + (selectedFilter === filter.value ? 'active' : '')"
+        >
+          {{filter.icon}} {{filter.label}}
+        </button>
+      </div>
+
+      <!-- Search Results -->
+      <div *ngIf="loading" class="loading">
+        <div class="loading-spinner"></div>
+        <p>Discovering amazing facts...</p>
+      </div>
+      
+      <div *ngIf="error" class="error">
+        <span>⚠️ {{error}}</span>
+      </div>
+
+      <!-- Search Result Card -->
+      <div *ngIf="searchResult" class="result-card">
+        <div class="result-image">
+          <img [src]="searchResult.imageUrl" [alt]="searchResult.commonName" />
+          <div class="result-overlay">
+            <h3>{{searchResult.commonName}}</h3>
+            <p *ngIf="searchResult.sciName" class="scientific-name">{{searchResult.sciName}}</p>
+          </div>
+        </div>
+        <div class="result-details">
+          <div class="detail-item" *ngIf="searchResult.details?.characteristics?.diet">
+            <span class="detail-icon">🍽️</span>
+            <strong>Diet:</strong> {{searchResult.details.characteristics.diet}}
+          </div>
+          <div class="detail-item" *ngIf="searchResult.details?.characteristics?.habitat">
+            <span class="detail-icon">🏠</span>
+            <strong>Habitat:</strong> {{searchResult.details.characteristics.habitat}}
+          </div>
+          <div class="detail-item" *ngIf="searchResult.details?.characteristics?.location">
+            <span class="detail-icon">📍</span>
+            <strong>Location:</strong> {{searchResult.details.characteristics.location}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Animals Section -->
+    <div class="featured-section">
+      <h2 class="section-title">✨ Featured Animals</h2>
+      <div class="cards">
+        <div 
+          *ngFor="let animal of getFilteredFeaturedAnimals()" 
+          class="card featured-card"
+          (click)="selectFeaturedAnimal(animal)"
+        >
+          <img [src]="animal.imageUrl" [alt]="animal.name" />
+          <div class="card-content">
+            <h3>{{animal.name}}</h3>
+            <p class="scientific-name">{{animal.sciName}}</p>
+            <div class="hover-details">
+              <div class="detail-row">
+                <span class="detail-icon">🍽️</span>
+                <span>{{animal.diet}}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-icon">🏠</span>
+                <span>{{animal.habitat}}</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-icon">📍</span>
+                <span>{{animal.location}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fun Facts Banner -->
+    <div class="facts-banner">
+      <div class="facts-header">
+        <h2>🤔 Did You Know?</h2>
+        <p>Amazing animal facts that will blow your mind!</p>
+      </div>
+      
+      <div class="facts-carousel" *ngIf="currentFact">
+        <button class="nav-btn prev" (click)="previousFact()">
+          <span>‹</span>
+        </button>
+        
+        <div class="fact-card">
+          <div class="fact-image">
+            <img [src]="currentFact.imageUrl" [alt]="currentFact.name" />
+          </div>
+          <div class="fact-content">
+            <h3>{{currentFact.name}}</h3>
+            <p class="fact-text">{{currentFact.funFact}}</p>
+            <div class="fact-stats">
+              <span class="stat">📏 {{currentFact.weight}}</span>
+              <span class="stat">⏰ {{currentFact.lifespan}}</span>
+            </div>
+          </div>
+        </div>
+        
+        <button class="nav-btn next" (click)="nextFact()">
+          <span>›</span>
+        </button>
+      </div>
+      
+      <div class="fact-indicators">
+        <span 
+          *ngFor="let fact of animalFacts; let i = index" 
+          class="indicator"
+          [class.active]="i === currentFactIndex"
+          (click)="goToFact(i)"
+        ></span>
+      </div>
+    </div>
+  </div>
+</div>
