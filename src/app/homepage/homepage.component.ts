@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+
 @Component({
   selector: 'app-homepage',
   standalone: true,
@@ -135,4 +136,19 @@ export class HomepageComponent {
     // Navigate to animals page or show all animals
     console.log('View more animals clicked');
   }
+
+  onJoinMission() {
+  // Navigate to volunteer/donation page or show mission details
+  console.log('Join mission clicked - redirect to volunteer page');
+}
+
+onStartExploring() {
+  // Navigate to explore/animals page
+  console.log('Start exploring clicked - redirect to animals page');
+}
+
+onLearnMore() {
+  // Navigate to about page or show more information
+  console.log('Learn more clicked - redirect to about page');
+}
 }
