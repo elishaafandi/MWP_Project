@@ -133,36 +133,52 @@
   </section>
 
   <!-- SDG 15 Section -->
-  <section class="sdg15-video-section">
-    <video autoplay muted loop playsinline class="sdg15-bg-video">
-      <source src="/videos/elephantc.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <!-- SDG 15 Section -->
+<section class="sdg15-video-section">
+  <video autoplay muted loop playsinline class="sdg15-bg-video">
+    <source src="/videos/elephantc.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-    <div class="sdg15-overlay"></div>
+  <div class="sdg15-overlay"></div>
 
-    <div class="sdg15-content">
-      <h2 class="sdg15-title">SDG 15: Life on Land</h2>
-      <p class="sdg15-description">
-        Protect, restore, and promote sustainable use of terrestrial ecosystems — from ancient forests to hidden wildlife.
-      </p>
+  <div class="sdg15-content">
+    <div class="sdg15-title-container">
+  <img src="/images/sdg15.png" alt="SDG 15" class="sdg15-logo" />
+  <h2 class="sdg15-title">SDG 15: Life on Land</h2>
+</div>
 
-      <div class="sdg15-card-container">
-        <div class="sdg15-card">
-          <h3>🌳 Forest Preservation</h3>
-          <p>Safeguarding trees and biodiversity with eco-conscious practices.</p>
-        </div>
-        <div class="sdg15-card">
-          <h3>🦓 Species at Risk</h3>
-          <p>Shining a light on vulnerable animals and conservation goals.</p>
-        </div>
-        <div class="sdg15-card">
-          <h3>🌍 Action & Education</h3>
-          <p>Empowering communities and youth to drive planet-positive change.</p>
-        </div>
-      </div>
+    <p class="sdg15-description">
+      Protect, restore, and promote sustainable use of terrestrial ecosystems — from ancient forests to hidden wildlife.
+    </p>
+
+    <div class="sdg15-card" (click)="openSDGPopup('forest')">
+      <h3>🌳 Forest Preservation</h3>
+      <p>Safeguarding trees and biodiversity with eco-conscious practices.</p>
     </div>
-  </section>
+    <div class="sdg15-card" (click)="openSDGPopup('species')">
+      <h3>🦓 Species at Risk</h3>
+      <p>Shining a light on vulnerable animals and conservation goals.</p>
+    </div>
+    <div class="sdg15-card" (click)="openSDGPopup('action')">
+      <h3>🌍 Action & Education</h3>
+      <p>Empowering communities and youth to drive planet-positive change.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SDG Popup Modal -->
+<div class="sdg-popup-overlay" *ngIf="activeSDG" (click)="closeSDGPopup()">
+  <div class="sdg-popup-card" (click)="$event.stopPropagation()">
+    <img [src]="activeSDG.image" alt="SDG Image" class="sdg-popup-image">
+    <div class="sdg-popup-content">
+      <h3>{{ activeSDG.title }}</h3>
+      <p>{{ activeSDG.description }}</p>
+    </div>
+  </div>
+</div>
+
+
   
 
   <!-- About Us Section -->

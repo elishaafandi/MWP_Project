@@ -155,4 +155,32 @@ onLearnMore() {
   // Navigate to about page or show more information
   console.log('Learn more clicked - redirect to about page');
 }
+
+activeSDG: any = null;
+
+openSDGPopup(key: string) {
+  const sdgData: any = {
+    forest: {
+      title: 'Forest Preservation',
+      description: 'Forests provide vital oxygen, store carbon, and house wildlife. We must protect and reforest for biodiversity and climate stability.',
+      image: '/images/forest.jpg' // make sure this image exists in /public/images
+    },
+    species: {
+      title: 'Species at Risk',
+      description: 'Many species are on the brink due to habitat loss and poaching. Awareness and protection are urgent to prevent extinction.',
+      image: '/images/species.jpg'
+    },
+    action: {
+      title: 'Action & Education',
+      description: 'Through education and local empowerment, we inspire action for lasting conservation and planet-positive change.',
+      image: '/images/action.jpg'
+    }
+  };
+  this.activeSDG = sdgData[key];
+}
+
+closeSDGPopup() {
+  this.activeSDG = null;
+}
+
 }

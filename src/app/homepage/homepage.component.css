@@ -881,10 +881,10 @@
   /* SDG Section */
 /* ✨ SDG 15 Pretty Section */
 /* 🌿 SDG 15 - With Video Background */
+/* SDG 15 Section Base Styles */
 .sdg15-video-section {
   position: relative;
-  padding: 6rem 2rem;
-  text-align: center;
+  padding: 80px 20px;
   color: #fff;
   overflow: hidden;
 }
@@ -897,79 +897,106 @@
   height: 100%;
   object-fit: cover;
   z-index: -2;
+  filter: brightness(0.4);
 }
 
 .sdg15-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(66, 42, 28, 0.8),
-    rgba(45, 90, 75, 0.7)
-  );
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
   z-index: -1;
-  backdrop-filter: blur(3px);
 }
 
+/* Content */
 .sdg15-content {
-  max-width: 1000px;
-  margin: auto;
-  z-index: 2;
-  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sdg15-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.sdg15-logo {
+  width: 80px;
+  height: auto;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 4px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.sdg15-logo:hover {
+  transform: scale(1.05);
 }
 
 .sdg15-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  margin-bottom: 1.2rem;
-  background: linear-gradient(45deg, #f4a261, #dab49d, #ffe8d6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 2.5rem;
+  color: #d1ffda;
+  margin: 0;
 }
+
 
 .sdg15-description {
   font-size: 1.2rem;
-  max-width: 700px;
-  margin: 0 auto 3rem;
-  line-height: 1.7;
-  color: #fffdf9;
+  margin-bottom: 2.5rem;
+  color: #f0f0f0;
 }
 
-.sdg15-card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
+/* SDG Cards */
 .sdg15-card {
-  background: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  padding: 2rem;
-  width: 280px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(6px);
-  transition: transform 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 24px;
+  margin: 12px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
 }
 
 .sdg15-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+.sdg15-content .sdg15-card {
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+  text-align: left;
+  color: #ffffff;
 }
 
 .sdg15-card h3 {
   font-size: 1.3rem;
-  margin-bottom: 0.6rem;
-  color: #ffe8d6;
+  margin-bottom: 0.5rem;
+  color: #c4fbc3;
 }
 
 .sdg15-card p {
   font-size: 1rem;
   line-height: 1.5;
-  color: #fefae0;
+  color: #eaeaea;
+}
+
+/* Responsive stacking */
+@media (max-width: 960px) {
+  .sdg15-content .sdg15-card {
+    display: block;
+    width: 100%;
+    margin: 12px auto;
+  }
 }
 
 
@@ -1073,3 +1100,63 @@
   background-image: url('/images/chicken.png');
   transform: scaleX(-1);
 }
+
+/* SDG Popup Styles */
+.sdg-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(34, 34, 34, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.sdg-popup-card {
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  max-width: 720px;
+  width: 90%;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.4s ease;
+}
+
+.sdg-popup-image {
+  width: 50%;
+  object-fit: cover;
+}
+
+.sdg-popup-content {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.sdg-popup-content h3 {
+  margin-top: 0;
+  font-size: 1.6rem;
+  color: #1f3b2e;
+}
+
+.sdg-popup-content p {
+  color: #444;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
