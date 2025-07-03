@@ -941,7 +941,6 @@
 }
 
 .sdg15-title {
-  font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
   color: #d1ffda;
   margin: 0;
@@ -1085,8 +1084,8 @@
   height: 100%;
   width: 80px;
   background-repeat: repeat-y;
-  background-size: 100px auto;
-  opacity: 0.3;
+  background-size: 60px auto;
+  opacity: 0.15;
   z-index: 1;
   pointer-events: none;
 }
