@@ -1,4 +1,4 @@
-/* Homepage Component Styles */
+
 .homepage-container {
   width: 100%;
   margin: 0;
@@ -6,7 +6,7 @@
   overflow-x: hidden;
 }
 
-/* Hero Section */
+
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -109,7 +109,7 @@
   transform: translateX(5px);
 }
 
-/* Floating Elements */
+
 .floating-elements {
   position: absolute;
   top: 0;
@@ -186,7 +186,7 @@
   animation: morph 8s ease-in-out infinite;
 }
 
-/* Featured Animals Section */
+
 .featured-animals {
   padding: 6rem 2rem 4rem;
   background: 
@@ -203,7 +203,7 @@
   position: relative;
 }
 
-/* Section Header */
+
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -213,7 +213,7 @@
 }
 
 .section-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 600;
   color: #ffffff;
@@ -221,7 +221,7 @@
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Carousel Controls */
+
 .carousel-controls {
   display: flex;
   gap: 1rem;
@@ -262,7 +262,7 @@
   transform: scale(1.1);
 }
 
-/* Animals Grid */
+
 .animals-carousel-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -323,7 +323,7 @@
 }
 
 .card-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.8rem;
   font-weight: 600;
   color: white;
@@ -380,7 +380,7 @@
   border: 1px solid rgba(255, 152, 0, 0.5);
 }
 
-/* View More Card */
+
 .view-more-card {
   position: relative;
   height: 400px;
@@ -426,7 +426,7 @@
 }
 
 .view-more-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -456,7 +456,7 @@
   transform: translateY(-2px);
 }
 
-/* Pagination Dots */
+
 .pagination-dots {
   display: flex;
   justify-content: center;
@@ -482,7 +482,7 @@
   background: rgba(255, 255, 255, 0.8);
 }
 
-/* Stats Section */
+
 .stats-section {
   padding: 4rem 2rem;
   background: linear-gradient(135deg, rgba(45, 90, 75, 0.1), rgba(75, 120, 105, 0.05));
@@ -511,7 +511,7 @@
 }
 
 .stat-number {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 3rem;
   font-weight: 700;
   color: #2d5a4b;
@@ -524,7 +524,7 @@
   font-size: 1.1rem;
 }
 
-/* Animations */
+
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-20px) rotate(10deg); }
@@ -551,7 +551,7 @@
     transform: translateX(0);
   }
 }
-/* Mission and Vision Section */
+
 .mission-vision-section {
   position: relative;
   padding: 6rem 2rem;
@@ -594,7 +594,7 @@
 }
 
 .mission-vision-header .section-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
   color: #ffffff;
@@ -674,7 +674,7 @@
 }
 
 .mission-vision-grid .card-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 2.2rem;
   font-weight: 700;
   color: #ffffff;
@@ -723,7 +723,7 @@
   font-size: 1rem;
 }
 
-/* Floating Elements */
+
 .mission-vision-section .floating-elements {
   position: absolute;
   top: 0;
@@ -795,7 +795,7 @@
   transform: rotate(15deg);
 }
 
-/* Animations */
+
 @keyframes float {
   0%, 100% { 
     transform: translateY(0px) rotate(0deg); 
@@ -816,7 +816,7 @@
   }
 }
 
-/* Responsive Design */
+
 @media (max-width: 1024px) {
   .mission-vision-grid {
     gap: 2rem;
@@ -878,10 +878,6 @@
 }
 
 
-  /* SDG Section */
-/* ✨ SDG 15 Pretty Section */
-/* 🌿 SDG 15 - With Video Background */
-/* SDG 15 Section Base Styles */
 .sdg15-video-section {
   position: relative;
   padding: 80px 20px;
@@ -910,7 +906,6 @@
   z-index: -1;
 }
 
-/* Content */
 .sdg15-content {
   max-width: 1100px;
   margin: 0 auto;
@@ -943,6 +938,7 @@
 .sdg15-title {
   font-size: 2.5rem;
   color: #d1ffda;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
 }
 
@@ -953,7 +949,7 @@
   color: #f0f0f0;
 }
 
-/* SDG Cards */
+
 .sdg15-card {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
@@ -982,6 +978,7 @@
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
   color: #c4fbc3;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .sdg15-card p {
@@ -990,7 +987,7 @@
   color: #eaeaea;
 }
 
-/* Responsive stacking */
+
 @media (max-width: 960px) {
   .sdg15-content .sdg15-card {
     display: block;
@@ -998,8 +995,6 @@
     margin: 12px auto;
   }
 }
-
-
 
 .about-pretty {
   padding: 5rem 2rem;
@@ -1017,7 +1012,7 @@
 }
 
 .about-heading {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 3rem;
   color: #2d5a4b;
   margin-bottom: 1rem;
@@ -1097,7 +1092,7 @@
 
 
 
-/* Footprint decorations */
+
 .footprints-left, .footprints-right {
   position: absolute;
   top: 0;
@@ -1121,7 +1116,7 @@
   transform: scaleX(-1);
 }
 
-/* SDG Popup Styles - Modern Aesthetic */
+
 .sdg-popup-overlay {
   position: fixed;
   top: 0;
@@ -1230,7 +1225,7 @@
   text-align: justify;
 }
 
-/* Close Button */
+
 .sdg-close-btn {
   position: absolute;
   top: 20px;
@@ -1261,7 +1256,7 @@
   transform: scale(1.1);
 }
 
-/* Decorative Elements */
+
 .sdg-popup-content::before {
   content: '';
   position: absolute;
@@ -1289,7 +1284,7 @@
   animation: float 4s ease-in-out infinite;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .sdg-popup-card {
     flex-direction: column;
@@ -1340,7 +1335,7 @@
   }
 }
 
-/* Enhanced Animations */
+
 @keyframes fadeIn {
   from {
     opacity: 0;

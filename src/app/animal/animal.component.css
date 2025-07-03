@@ -1,3 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
 .container {
   position: relative;
   z-index: 1;
@@ -49,9 +56,11 @@
 
 .animal-search-container h2 {
   font-size: 2.5rem;
+  font-weight: 600;
   color: #fefefe;
   margin-bottom: 2rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  letter-spacing: -0.5px;
 }
 
 .search-wrapper {
@@ -72,6 +81,7 @@
   backdrop-filter: blur(10px);
   color: #fff;
   font-size: 1rem;
+  font-weight: 400;
   border: 2px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
 }
@@ -84,6 +94,7 @@
 
 .search-input::placeholder {
   color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
 }
 
 .search-btn {
@@ -93,9 +104,11 @@
   background: linear-gradient(45deg, #ff7f50, #ff6b35);
   color: white;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(255, 127, 80, 0.3);
+  letter-spacing: 0.5px;
 }
 
 .search-btn:hover:not(:disabled) {
@@ -122,6 +135,8 @@
   border-radius: 25px;
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -136,6 +151,7 @@
 .filter-btn.active {
   background: linear-gradient(45deg, #ff7f50, #ff6b35);
   color: white;
+  font-weight: 600;
   box-shadow: 0 4px 15px rgba(255, 127, 80, 0.3);
 }
 
@@ -146,6 +162,11 @@
   gap: 1rem;
   padding: 2rem;
   color: #f0f0f0;
+}
+
+.loading p {
+  font-weight: 400;
+  font-size: 1.1rem;
 }
 
 .loading-spinner {
@@ -169,6 +190,7 @@
   border-radius: 12px;
   margin: 1rem 0;
   backdrop-filter: blur(10px);
+  font-weight: 500;
 }
 
 .result-card {
@@ -211,13 +233,16 @@
 
 .result-overlay h3 {
   font-size: 2rem;
+  font-weight: 600;
   margin: 0 0 0.5rem;
+  letter-spacing: -0.5px;
 }
 
 .scientific-name {
   font-style: italic;
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.1rem;
+  font-weight: 400;
 }
 
 .result-details {
@@ -230,6 +255,11 @@
   gap: 1rem;
   margin-bottom: 1rem;
   font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.detail-item strong {
+  font-weight: 600;
 }
 
 .detail-icon {
@@ -243,9 +273,11 @@
 
 .section-title {
   font-size: 2.5rem;
+  font-weight: 600;
   color: #fefefe;
   margin-bottom: 2rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  letter-spacing: -0.5px;
 }
 
 .cards {
@@ -288,6 +320,8 @@
   margin: 0 0 0.5rem;
   color: #F8F8F8;
   font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.3px;
 }
 
 .hover-details {
@@ -308,6 +342,7 @@
   gap: 0.5rem;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -346,13 +381,16 @@
 
 .facts-header h2 {
   font-size: 2.2rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
   color: #fefefe;
+  letter-spacing: -0.5px;
 }
 
 .facts-header p {
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.1rem;
+  font-weight: 400;
 }
 
 .facts-carousel {
@@ -396,12 +434,15 @@
 
 .fact-content h3 {
   font-size: 1.5rem;
+  font-weight: 600;
   margin-bottom: 1rem;
   color: #fefefe;
+  letter-spacing: -0.3px;
 }
 
 .fact-text {
   font-size: 1.1rem;
+  font-weight: 400;
   line-height: 1.6;
   margin-bottom: 1rem;
   color: rgba(255, 255, 255, 0.9);
@@ -418,6 +459,7 @@
   padding: 0.5rem 1rem;
   border-radius: 15px;
   font-size: 0.9rem;
+  font-weight: 500;
   border: 1px solid rgba(255, 127, 80, 0.4);
 }
 
@@ -509,10 +551,12 @@
 
 .results-title {
   font-size: 1.8rem;
+  font-weight: 600;
   color: #fefefe;
   margin-bottom: 2rem;
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  letter-spacing: -0.3px;
 }
 
 .results-grid {
@@ -566,13 +610,16 @@
 
 .result-overlay h4 {
   font-size: 1.3rem;
+  font-weight: 600;
   margin: 0 0 0.3rem;
+  letter-spacing: -0.3px;
 }
 
 .scientific-name {
   font-style: italic;
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.9rem;
+  font-weight: 400;
   margin: 0;
 }
 
@@ -586,7 +633,12 @@
   gap: 0.8rem;
   margin-bottom: 0.8rem;
   font-size: 0.95rem;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.9);
+}
+
+.detail-item strong {
+  font-weight: 600;
 }
 
 .detail-icon {
@@ -595,14 +647,14 @@
   flex-shrink: 0;
 }
 
-/* Enhanced loading states */
+
 .featured-section .loading,
 .facts-banner .loading {
   color: rgba(255, 255, 255, 0.8);
   padding: 2rem;
 }
 
-/* Mobile responsiveness for search results */
+
 @media (max-width: 768px) {
   .results-grid {
     grid-template-columns: 1fr;
@@ -611,5 +663,17 @@
   
   .result-image {
     height: 180px;
+  }
+  
+  .animal-search-container h2 {
+    font-size: 2rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .facts-header h2 {
+    font-size: 1.8rem;
   }
 }
