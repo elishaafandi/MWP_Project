@@ -1001,7 +1001,6 @@
 
 
 
-/* 💖 About Pretty Section */
 .about-pretty {
   padding: 5rem 2rem;
   background: linear-gradient(135deg, #ffffff, #e8f5f1);
@@ -1011,12 +1010,11 @@
 }
 
 .about-wrapper {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: auto;
   position: relative;
   z-index: 2;
 }
-
 
 .about-heading {
   font-family: 'Playfair Display', serif;
@@ -1026,6 +1024,8 @@
   background: linear-gradient(90deg, #e76f51, #f4a261);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+
 }
 
 .about-intro {
@@ -1034,24 +1034,38 @@
   max-width: 720px;
   margin: 0 auto 3rem;
   line-height: 1.6;
+
 }
 
 .about-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .about-card {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   padding: 1.5rem;
-  width: 220px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: none;
 }
+
+
 
 .about-card:hover {
   transform: translateY(-10px);
@@ -1059,40 +1073,46 @@
 
 .about-img {
   width: 100%;
-  height: 220px;
+  height: 200px;
   object-fit: cover;
   border-radius: 15px;
   margin-bottom: 1rem;
+  transition: transform 0.3s ease;
 }
+
+
 
 .about-card h4 {
   font-size: 1.2rem;
   color: #2d5a4b;
   margin-bottom: 0.3rem;
+  font-weight: 600;
 }
 
 .about-card p {
   font-size: 0.95rem;
   color: #5a8d7e;
+  font-weight: 400;
 }
 
-/* 🐾 Animal Footprint Decorations for About Section */
-.footprints-left,
-.footprints-right {
+
+
+/* Footprint decorations */
+.footprints-left, .footprints-right {
   position: absolute;
   top: 0;
   height: 100%;
   width: 80px;
   background-repeat: repeat-y;
   background-size: 60px auto;
-  opacity: 0.15;
+  opacity: 0.1;
   z-index: 1;
   pointer-events: none;
 }
 
 .footprints-left {
   left: 0;
-  background-image: url('/images/chicken.png'); /* make sure the file exists */
+  background-image: url('/images/chicken.png');
 }
 
 .footprints-right {
@@ -1101,62 +1121,251 @@
   transform: scaleX(-1);
 }
 
-/* SDG Popup Styles */
+/* SDG Popup Styles - Modern Aesthetic */
 .sdg-popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(34, 34, 34, 0.75);
+  background: rgba(20, 35, 30, 0.85);
+  backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  animation: fadeIn 0.3s ease;
 }
 
 .sdg-popup-card {
-  background: #fff;
-  border-radius: 12px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(248, 250, 252, 0.9) 100%
+  );
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
   display: flex;
   flex-direction: row;
-  max-width: 720px;
-  width: 90%;
+  max-width: 800px;
+  width: 92%;
   overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-  animation: fadeInUp 0.4s ease;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: slideInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 1px solid rgba(45, 90, 75, 0.1);
+}
+
+.sdg-popup-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(139, 195, 74, 0.03) 0%, 
+    rgba(75, 120, 105, 0.02) 50%,
+    rgba(244, 162, 97, 0.03) 100%
+  );
+  border-radius: 25px;
+  pointer-events: none;
 }
 
 .sdg-popup-image {
   width: 50%;
+  height: 400px;
   object-fit: cover;
+  position: relative;
+  border-radius: 20px 0 0 20px;
+}
+
+.sdg-popup-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(45, 90, 75, 0.1) 0%, 
+    transparent 50%,
+    rgba(139, 195, 74, 0.1) 100%
+  );
+  border-radius: 20px 0 0 20px;
 }
 
 .sdg-popup-content {
-  padding: 1.5rem;
+  padding: 3rem;
   flex: 1;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .sdg-popup-content h3 {
   margin-top: 0;
-  font-size: 1.6rem;
-  color: #1f3b2e;
+  margin-bottom: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2d5a4b;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #2d5a4b, #4a7c59);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .sdg-popup-content p {
-  color: #444;
-  font-size: 1rem;
-  margin-top: 0.5rem;
+  color: #5a8d7e;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  text-align: justify;
 }
 
-@keyframes fadeInUp {
+/* Close Button */
+.sdg-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 2rem;
+  color: rgba(45, 90, 75, 0.7);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  z-index: 10;
+  border: 1px solid rgba(45, 90, 75, 0.2);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  line-height: 1;
+  user-select: none;
+}
+
+.sdg-close-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2d5a4b;
+  transform: scale(1.1);
+}
+
+/* Decorative Elements */
+.sdg-popup-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 60px;
+  background: linear-gradient(180deg, #f4a261, #e76f51);
+  border-radius: 2px;
+}
+
+.sdg-popup-content::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(45deg, 
+    rgba(139, 195, 74, 0.1), 
+    rgba(102, 187, 106, 0.1)
+  );
+  border-radius: 50% 10px 50% 10px;
+  opacity: 0.6;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sdg-popup-card {
+    flex-direction: column;
+    max-width: 95%;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  
+  .sdg-popup-image {
+    width: 100%;
+    height: 250px;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  .sdg-popup-image::after {
+    border-radius: 20px 20px 0 0;
+  }
+  
+  .sdg-popup-content {
+    padding: 2rem;
+  }
+  
+  .sdg-popup-content h3 {
+    font-size: 1.8rem;
+  }
+  
+  .sdg-popup-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sdg-popup-card {
+    max-width: 98%;
+    margin: 1rem;
+  }
+  
+  .sdg-popup-content {
+    padding: 1.5rem;
+  }
+  
+  .sdg-popup-content h3 {
+    font-size: 1.5rem;
+  }
+  
+  .sdg-popup-content p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Enhanced Animations */
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-10px) rotate(5deg); 
+  }
+}

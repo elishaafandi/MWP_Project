@@ -1,4 +1,4 @@
-/* Updated App Header Styles */
+/* Updated App Header Styles with Dynamic Orange Glossy Homepage */
 .app-header {
   background: #2d5a4b;
   padding: 20px 40px;
@@ -11,8 +11,68 @@
   right: 0;
   z-index: 1000;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Orange Glossy Header for Homepage */
+.app-header.homepage-header {
+  background: linear-gradient(145deg, 
+    #ff8c42 0%, 
+    #ff7849 25%, 
+    #e76f51 50%, 
+    #f4a261 75%, 
+    #ff8c42 100%
+  );
+  box-shadow: 
+    0 4px 30px rgba(255, 140, 66, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+/* Add glossy overlay effect for homepage */
+.app-header.homepage-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, 
+    rgba(255, 255, 255, 0.3) 0%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    transparent 100%
+  );
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Animated glossy shine effect */
+.app-header.homepage-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.4) 50%, 
+    transparent 100%
+  );
+  animation: glossyShine 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Ensure content stays above overlay effects */
+.brand-container,
+.nav-links {
+  position: relative;
+  z-index: 3;
+}
 
 .brand-container {
   display: flex;
@@ -22,8 +82,11 @@
 .brand-logo {
   height: 65px;
   margin-right: 15px;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  transition: filter 0.3s ease;
 }
 
+/* Enhanced brand name for homepage */
 .brand-name {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
@@ -31,6 +94,15 @@
   color: #ffffff;
   margin: 0;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.app-header.homepage-header .brand-name {
+  text-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.3),
+    0 0 30px rgba(255, 140, 66, 0.4);
+  color: #ffffff;
 }
 
 .nav-links {
@@ -54,15 +126,60 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Enhanced nav links for homepage */
+.app-header.homepage-header .nav-links a {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
 .nav-links a:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+.app-header.homepage-header .nav-links a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
 .nav-links a.active {
-  background: rgba(255, 255, 255, 0.25);
+  background: linear-gradient(145deg,
+    #ff8c42 0%,
+    #ff7849 25%,
+    #e76f51 50%,
+    #f4a261 75%,
+    #ff8c42 100%);
+  color: #fff;
+  font-weight: 600;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+.nav-links a.active:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+
+.app-header.homepage-header .nav-links a.active {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 /* Update body and app-root to accommodate transparent header */
@@ -179,6 +296,21 @@ body::after {
   }
 }
 
+/* Glossy shine animation */
+@keyframes glossyShine {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
 /* Responsive Design for Header */
 @media (max-width: 768px) {
   .app-header {
@@ -187,6 +319,16 @@ body::after {
     gap: 15px;
     position: relative;
     background: #2d5a4b;
+  }
+  
+  .app-header.homepage-header {
+    background: linear-gradient(145deg, 
+      #ff8c42 0%, 
+      #ff7849 25%, 
+      #e76f51 50%, 
+      #f4a261 75%, 
+      #ff8c42 100%
+    );
   }
   
   .brand-name {
@@ -221,5 +363,130 @@ body::after {
   .nav-links a {
     font-size: 0.8rem;
     padding: 6px 12px;
+  }
+}
+
+.app-footer {
+  background-color: #2d5a4b;
+  color: #fff;
+  padding: 60px 40px 20px;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #f4a261;
+}
+
+.footer-newsletter h3,
+.footer-contact h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.footer-newsletter p {
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.footer-newsletter form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-newsletter input {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 4px;
+}
+
+.footer-newsletter button {
+  background-color: #f4a261;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.footer-newsletter button:hover {
+  background-color: #e76f51;
+}
+
+.footer-contact p {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.footer-logo {
+  width: 120px;
+  margin-top: 10px;
+  filter: brightness(0) invert(1);
+}
+
+.social-icons a {
+  margin-right: 10px;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.footer-policy-links {
+  margin-top: 10px;
+}
+
+.footer-policy-links a {
+  color: #ccc;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+.footer-policy-links a:hover {
+  color: #f4a261;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 }
