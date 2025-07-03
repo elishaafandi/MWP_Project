@@ -82,7 +82,7 @@
         </div>
         
         <!-- View More Animals Card -->
-        <div class="view-more-card">
+        <div class="view-more-card" (click)="onViewMoreAnimals()">
           <div class="view-more-content">
             <div class="view-more-icon">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -92,8 +92,7 @@
             </div>
             <h3 class="view-more-title">Discover More</h3>
             <p class="view-more-description">Explore our complete collection of amazing wildlife</p>
-
-            <div class="view-more-button"(click)="onViewMoreAnimals()">
+            <div class="view-more-button">
               <span>View All Animals</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -169,12 +168,8 @@
 </section>
 
 <!-- SDG Popup Modal -->
-<!-- SDG Popup Modal -->
 <div class="sdg-popup-overlay" *ngIf="activeSDG" (click)="closeSDGPopup()">
   <div class="sdg-popup-card" (click)="$event.stopPropagation()">
-    <!-- Close Button -->
-    <button class="sdg-close-btn" (click)="closeSDGPopup()" aria-label="Close">×</button>
-    
     <img [src]="activeSDG.image" alt="SDG Image" class="sdg-popup-image">
     <div class="sdg-popup-content">
       <h3>{{ activeSDG.title }}</h3>
@@ -183,114 +178,120 @@
   </div>
 </div>
 
+
   
 
   <!-- About Us Section -->
+  <!-- About Us Section -->
   <section class="about-pretty">
-  <!-- Footprint decorations -->
-  <div class="footprints-left"></div>
-  <div class="footprints-right"></div>
-  
-  <div class="about-wrapper">
-    <h2 class="about-heading">Meet the Team</h2>
-    <p class="about-intro">
-      We're a team of passionate builders, storytellers, and advocates for wildlife and sustainability.
-    </p>
+    <!-- Small footprint decorations -->
+    <div class="footprints-left"></div>
+    <div class="footprints-right"></div>
     
-    <div class="about-grid">
-      <div class="about-card">
-        <img src="/images/elisha.jpg" alt="Elisha" class="about-img" />
-        <h4>Elisha Afandi</h4>
-        <p>Home Page</p>
+    <div class="about-wrapper">
+      <h2 class="about-heading">Meet the Team</h2>
+      <p class="about-intro">
+        We're a team of passionate builders, storytellers, and advocates for wildlife and sustainability.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <img src="/images/elisha.jpg" alt="Elisha" class="about-img" />
+          <h4>Elisha Afandi</h4>
+          <p>Design & UX</p>
+        </div>
+        <div class="about-card">
+          <img src="/images/Batriesya.jpg" alt="Batriesya" class="about-img" />
+          <h4>Batriesya Irdina</h4>
+          <p>Research & Content</p>
+        </div>
+        <div class="about-card">
+          <img src="/images/Lynda.jpg" alt="Hazel" class="about-img" />
+          <h4>Lynette Soh</h4>
+          <p>API & Integration</p>
+        </div>
+        <div class="about-card">
+          <img src="/images/Adam.jpg" alt="Fekre & Puven" class="about-img" />
+          <h4>Adam Azhar</h4>
+          <p>Testing & DevOps</p>
+        </div>
       </div>
-      <div class="about-card">
-        <img src="/images/Batriesya.jpg" alt="Batriesya" class="about-img" />
-        <h4>Batriesya Irdina</h4>
-        <p>Animal Page</p>
+    </div>
+  </section>
+
+  <!-- Mission and Vision Section -->
+  <section class="mission-vision-section">
+    <div class="mission-vision-container">
+      <div class="mission-vision-header">
+        <h2 class="section-title">Our Purpose</h2>
+        <p class="section-subtitle">Bridging the gap between humanity and the natural world</p>
       </div>
-      <div class="about-card">
-        <img src="/images/Lynda.jpg" alt="Hazel" class="about-img" />
-        <h4>Lynette Soh</h4>
-        <p>Endangered Animal</p>
+      
+      <div class="mission-vision-grid">
+        <!-- Mission -->
+        <div class="mission-card">
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Our Mission</h3>
+          <p class="card-description">
+            To document, celebrate, and protect the incredible diversity of wildlife on our planet. Through immersive storytelling and cutting-edge conservation science, we inspire action and foster a deeper connection with the natural world.
+          </p>
+          <div class="card-features">
+            <div class="feature-item">
+              <span class="feature-icon">🔬</span>
+              <span class="feature-text">Scientific Documentation</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🌍</span>
+              <span class="feature-text">Global Conservation</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">📚</span>
+              <span class="feature-text">Wildlife Education</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vision -->
+        <div class="vision-card">
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Our Vision</h3>
+          <p class="card-description">
+            A world where every species thrives in harmony with human civilization. We envision a future where wildlife conservation is not just a necessity, but a celebrated part of our global culture and identity.
+          </p>
+          <div class="card-features">
+            <div class="feature-item">
+              <span class="feature-icon">🌱</span>
+              <span class="feature-text">Sustainable Future</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🤝</span>
+              <span class="feature-text">Human-Wildlife Harmony</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">💚</span>
+              <span class="feature-text">Conservation Culture</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="about-card">
-        <img src="/images/Adam.jpg" alt="Fekre & Puven" class="about-img" />
-        <h4>Adam Azhar</h4>
-        <p>Personality Quiz</p>
-      </div>
     </div>
-  </div>
-</section>
-
- <!-- Mission -->
-<div class="mission-card">
-  <div class="card-icon">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-    </svg>
-  </div>
-  <h3 class="card-title">Our Mission</h3>
-  <p class="card-description">
-    To document, celebrate, and protect the incredible diversity of wildlife on our planet...
-  </p>
-  <div class="card-features">
-    <div class="feature-item">
-      <span class="feature-icon">🔬</span>
-      <span class="feature-text">Scientific Documentation</span>
+    
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+      <div class="floating-shape shape-1"></div>
+      <div class="floating-shape shape-2"></div>
+      <div class="floating-shape shape-3"></div>
+      <div class="floating-leaf leaf-1"></div>
+      <div class="floating-leaf leaf-2"></div>
     </div>
-    <div class="feature-item">
-      <span class="feature-icon">🌍</span>
-      <span class="feature-text">Global Conservation</span>
-    </div>
-    <div class="feature-item">
-      <span class="feature-icon">📚</span>
-      <span class="feature-text">Wildlife Education</span>
-    </div>
-  </div>
-
-  <!-- Mission Video -->
-  <div class="card-video">
-    <video width="100%" controls>
-      <source src="path/to/mission-video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</div>
-
-<!-- Vision -->
-<div class="vision-card">
-  <div class="card-icon">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-      <circle cx="12" cy="12" r="3"/>
-    </svg>
-  </div>
-  <h3 class="card-title">Our Vision</h3>
-  <p class="card-description">
-    A world where every species thrives in harmony with human civilization...
-  </p>
-  <div class="card-features">
-    <div class="feature-item">
-      <span class="feature-icon">🌱</span>
-      <span class="feature-text">Sustainable Future</span>
-    </div>
-    <div class="feature-item">
-      <span class="feature-icon">🤝</span>
-      <span class="feature-text">Human-Wildlife Harmony</span>
-    </div>
-    <div class="feature-item">
-      <span class="feature-icon">💚</span>
-      <span class="feature-text">Conservation Culture</span>
-    </div>
-  </div>
-
-  <!-- Vision Video -->
-  <div class="card-video">
-    <video width="100%" controls>
-      <source src="path/to/vision-video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</div>
-
+  </section>
 </div>

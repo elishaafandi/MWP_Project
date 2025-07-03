@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [CommonModule, RouterModule, InteractiveMapComponent],
+  imports: [CommonModule, RouterModule],
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })

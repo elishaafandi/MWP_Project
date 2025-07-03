@@ -27,58 +27,56 @@
 
   <hr />
 
-
-<div class ="container-how-to-help">
-   <div class="how-to-help">
-    <h2>How to Help</h2>
-    <p class="help-description">
-    Discover simple ways you can make a difference in protecting endangered species and preserving their habitats.</p>
-    <div class="tips">
-      <div class="tip-card">
-        <div class="card-inner">
-          <div class="card-front">
-            <img
-              class="background-img"
-              src="/images/orangutan.png"
-              alt="Protect Orangutan"
-            />
-            <div class="overlay">
-              <h3>Protect Their Homes</h3>
+  <div class="container-how-to-help">
+    <div class="how-to-help">
+      <h2>How to Help</h2>
+      <p class="help-description">
+        Discover simple ways you can make a difference in protecting endangered species and preserving their habitats.
+      </p>
+      <div class="tips">
+        <div class="tip-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img
+                class="background-img"
+                src="/images/orangutan.png"
+                alt="Protect Orangutan"
+              />
+              <div class="overlay">
+                <h3>Protect Their Homes</h3>
+              </div>
             </div>
-          </div>
-          <div class="card-back">
-            <p>Rangers protecting the forest from illegal logging.</p>
-            <p>
-  <em>Tip:</em>
-  <a
-    href="https://www.rainforest-alliance.org"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Support 
-  </a> 
-sustainable palm oil & reforestation efforts
-</p>
-
+            <div class="card-back">
+              <p>Rangers protecting the forest from illegal logging.</p>
+              <p>
+                <em>Tip:</em>
+                <a
+                  href="https://www.rainforest-alliance.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Support 
+                </a> 
+                sustainable palm oil & reforestation efforts
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
-      
-      <div class="tip-card">
-        <div class="card-inner">
-          <div class="card-front">
-            <img
-              class="background-img"
-              src="/images/rangers.png"
-              alt="Protect Orangutan"
-            />
-            <div class="overlay">
-              <h3>Support Anti-Poaching Units</h3>
+        <div class="tip-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img
+                class="background-img"
+                src="/images/rangers.png"
+                alt="Protect Orangutan"
+              />
+              <div class="overlay">
+                <h3>Support Anti-Poaching Units</h3>
+              </div>
             </div>
-          </div>
-          <div class="card-back">
-            <p>Gorillas and rhinos are heavily targeted by poachers.</p>
+            <div class="card-back">
+              <p>Gorillas and rhinos are heavily targeted by poachers.</p>
               <p>
                 <em>Tip:</em>
                 <a
@@ -89,48 +87,69 @@ sustainable palm oil & reforestation efforts
                   Donate
                 </a>
                 or raise awareness for wildlife protection units.
-             </p>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="tip-card">
-        <div class="card-inner">
-          <div class="card-front">
-            <img
-              class="background-img"
-              src="/images/tigerspaw.png"
-              alt="Protect Orangutan"
-            />
-            <div class="overlay">
-              <h3>Say No to Wildlife Products</h3>
+              </p>
             </div>
           </div>
-          <div class="card-back">
-            <p>Illegal wildlife trade threatens tigers and rhinos.</p>
-            <p>
-  <em>Tip:</em> Never buy wildlife-based 
-  <a
-    href="https://www.worldwildlife.org/threats/illegal-wildlife-trade"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    products
-  </a>, such as tiger bone wine or rhino horn.
-</p>
+        </div>
 
+        <div class="tip-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img
+                class="background-img"
+                src="/images/tigerspaw.png"
+                alt="Protect Orangutan"
+              />
+              <div class="overlay">
+                <h3>Say No to Wildlife Products</h3>
+              </div>
+            </div>
+            <div class="card-back">
+              <p>Illegal wildlife trade threatens tigers and rhinos.</p>
+              <p>
+                <em>Tip:</em> Never buy wildlife-based 
+                <a
+                  href="https://www.worldwildlife.org/threats/illegal-wildlife-trade"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  products
+                </a>, such as tiger bone wine or rhino horn.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      
+
+      <!-- Video Section -->
+      <div class="video-section">
+        <h3>Learn More Through Video</h3>
+        <p class="video-description">
+          Watch these inspiring documentaries and educational videos about conservation efforts around the world.
+        </p>
+        
+        <div class="video-grid">
+          <div class="video-card" *ngFor="let video of conservationVideos">
+            <div class="video-wrapper">
+              <iframe
+                [src]="video.embedUrl"
+                [title]="video.title"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="video-info">
+              <h4>{{ video.title }}</h4>
+              <p>{{ video.description }}</p>
+              <span class="video-duration">{{ video.duration }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-</div>
-
-
- 
 
 <!-- POPUP placed OUTSIDE the container -->
 <div
@@ -161,5 +180,3 @@ sustainable palm oil & reforestation efforts
   </p>
   <div id="map" style="height: 300px; width: 100%" *ngIf="selectedLocation"></div>
 </div>
-
-
