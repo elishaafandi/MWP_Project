@@ -82,7 +82,7 @@
         </div>
         
         <!-- View More Animals Card -->
-        <div class="view-more-card" (click)="onViewMoreAnimals()">
+        <div class="view-more-card">
           <div class="view-more-content">
             <div class="view-more-icon">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -92,7 +92,8 @@
             </div>
             <h3 class="view-more-title">Discover More</h3>
             <p class="view-more-description">Explore our complete collection of amazing wildlife</p>
-            <div class="view-more-button">
+
+            <div class="view-more-button"(click)="onViewMoreAnimals()">
               <span>View All Animals</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>

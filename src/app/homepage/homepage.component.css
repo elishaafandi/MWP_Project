@@ -1084,8 +1084,8 @@
   height: 100%;
   width: 80px;
   background-repeat: repeat-y;
-  background-size: 60px auto;
-  opacity: 0.15;
+  background-size: 100px auto;
+  opacity: 0.3;
   z-index: 1;
   pointer-events: none;
 }
