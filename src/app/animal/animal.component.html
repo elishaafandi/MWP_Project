@@ -1,10 +1,10 @@
-// Enhanced animal.component.html
+
 <div class="container">
   <div class="container-how-to-help">
     <div class="animal-search-container">
       <h2>🐾 Discover Amazing Animals</h2>
       
-      <!-- Search Bar -->
+    
       <div class="search-wrapper">
         <input 
           [(ngModel)]="animalName" 
@@ -18,7 +18,7 @@
         </button>
       </div>
 
-      <!-- Filter Buttons -->
+ 
       <div class="filter-container">
         <button 
           *ngFor="let filter of filters" 
@@ -29,7 +29,7 @@
         </button>
       </div>
 
-      <!-- Search Results -->
+   
       <div *ngIf="loading" class="loading">
         <div class="loading-spinner"></div>
         <p>Discovering amazing facts...</p>
@@ -39,7 +39,7 @@
         <span>⚠️ {{error}}</span>
       </div>
 
-      <!-- Multiple Search Results -->
+
       <div *ngIf="searchResults && searchResults.length > 0" class="search-results">
         <h3 class="results-title">🔍 Search Results ({{searchResults.length}} found)</h3>
         <div class="results-grid">
@@ -78,7 +78,6 @@
       </div>
     </div>
 
-    <!-- Featured Animals Section -->
     <div class="featured-section">
       <h2 class="section-title">✨ Featured Animals</h2>
       <div *ngIf="featuredLoading" class="loading">
@@ -114,7 +113,7 @@
       </div>
     </div>
 
-    <!-- Fun Facts Banner -->
+  
     <div class="facts-banner">
       <div class="facts-header">
         <h2>🤔 Did You Know?</h2>
