@@ -1,3 +1,4 @@
+// Enhanced animal.component.html
 <div class="container">
   <div class="container-how-to-help">
     <div class="animal-search-container">
@@ -7,7 +8,7 @@
       <div class="search-wrapper">
         <input 
           [(ngModel)]="animalName" 
-          placeholder="Enter animal name (e.g., lion, elephant, tiger)..." 
+          placeholder="Enter animal name (e.g., tiger, lion, shark)..." 
           (keyup.enter)="search()"
           class="search-input"
         />
@@ -38,27 +39,40 @@
         <span>⚠️ {{error}}</span>
       </div>
 
-      <!-- Search Result Card -->
-      <div *ngIf="searchResult" class="result-card">
-        <div class="result-image">
-          <img [src]="searchResult.imageUrl" [alt]="searchResult.commonName" />
-          <div class="result-overlay">
-            <h3>{{searchResult.commonName}}</h3>
-            <p *ngIf="searchResult.sciName" class="scientific-name">{{searchResult.sciName}}</p>
-          </div>
-        </div>
-        <div class="result-details">
-          <div class="detail-item" *ngIf="searchResult.details?.characteristics?.diet">
-            <span class="detail-icon">🍽️</span>
-            <strong>Diet:</strong> {{searchResult.details.characteristics.diet}}
-          </div>
-          <div class="detail-item" *ngIf="searchResult.details?.characteristics?.habitat">
-            <span class="detail-icon">🏠</span>
-            <strong>Habitat:</strong> {{searchResult.details.characteristics.habitat}}
-          </div>
-          <div class="detail-item" *ngIf="searchResult.details?.characteristics?.location">
-            <span class="detail-icon">📍</span>
-            <strong>Location:</strong> {{searchResult.details.characteristics.location}}
+      <!-- Multiple Search Results -->
+      <div *ngIf="searchResults && searchResults.length > 0" class="search-results">
+        <h3 class="results-title">🔍 Search Results ({{searchResults.length}} found)</h3>
+        <div class="results-grid">
+          <div *ngFor="let animal of searchResults" class="result-card">
+            <div class="result-image">
+              <img [src]="animal.imageUrl" [alt]="animal.name" />
+              <div class="result-overlay">
+                <h4>{{animal.name}}</h4>
+                <p *ngIf="animal.taxonomy?.scientific_name" class="scientific-name">{{animal.taxonomy.scientific_name}}</p>
+              </div>
+            </div>
+            <div class="result-details">
+              <div class="detail-item" *ngIf="animal.characteristics?.diet">
+                <span class="detail-icon">🍽️</span>
+                <strong>Diet:</strong> {{animal.characteristics.diet}}
+              </div>
+              <div class="detail-item" *ngIf="animal.characteristics?.habitat">
+                <span class="detail-icon">🏠</span>
+                <strong>Habitat:</strong> {{animal.characteristics.habitat}}
+              </div>
+              <div class="detail-item" *ngIf="animal.characteristics?.locations">
+                <span class="detail-icon">📍</span>
+                <strong>Location:</strong> {{ (animal.characteristics.locations.slice(0, 2)).join(', ') }}
+              </div>
+              <div class="detail-item" *ngIf="animal.characteristics?.weight">
+                <span class="detail-icon">⚖️</span>
+                <strong>Weight:</strong> {{animal.characteristics.weight}}
+              </div>
+              <div class="detail-item" *ngIf="animal.characteristics?.lifespan">
+                <span class="detail-icon">⏰</span>
+                <strong>Lifespan:</strong> {{animal.characteristics.lifespan}}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -67,6 +81,10 @@
     <!-- Featured Animals Section -->
     <div class="featured-section">
       <h2 class="section-title">✨ Featured Animals</h2>
+      <div *ngIf="featuredLoading" class="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading featured animals...</p>
+      </div>
       <div class="cards">
         <div 
           *ngFor="let animal of getFilteredFeaturedAnimals()" 
@@ -76,19 +94,19 @@
           <img [src]="animal.imageUrl" [alt]="animal.name" />
           <div class="card-content">
             <h3>{{animal.name}}</h3>
-            <p class="scientific-name">{{animal.sciName}}</p>
+            <p *ngIf="animal.taxonomy?.scientific_name" class="scientific-name">{{animal.taxonomy.scientific_name}}</p>
             <div class="hover-details">
-              <div class="detail-row">
+              <div class="detail-row" *ngIf="animal.characteristics?.diet">
                 <span class="detail-icon">🍽️</span>
-                <span>{{animal.diet}}</span>
+                <span>{{animal.characteristics.diet}}</span>
               </div>
-              <div class="detail-row">
+              <div class="detail-row" *ngIf="animal.characteristics?.habitat">
                 <span class="detail-icon">🏠</span>
-                <span>{{animal.habitat}}</span>
+                <span>{{animal.characteristics.habitat}}</span>
               </div>
-              <div class="detail-row">
+              <div class="detail-row" *ngIf="animal.characteristics?.locations">
                 <span class="detail-icon">📍</span>
-                <span>{{animal.location}}</span>
+                <span>{{ (animal.characteristics.locations.slice(0, 1)).join(', ') }}</span>
               </div>
             </div>
           </div>
@@ -100,10 +118,15 @@
     <div class="facts-banner">
       <div class="facts-header">
         <h2>🤔 Did You Know?</h2>
-        <p>Amazing animal facts that will blow your mind!</p>
+        <p>Amazing animal facts from our database!</p>
       </div>
       
-      <div class="facts-carousel" *ngIf="currentFact">
+      <div *ngIf="factsLoading" class="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading amazing facts...</p>
+      </div>
+
+      <div class="facts-carousel" *ngIf="currentFact && !factsLoading">
         <button class="nav-btn prev" (click)="previousFact()">
           <span>‹</span>
         </button>
@@ -116,8 +139,9 @@
             <h3>{{currentFact.name}}</h3>
             <p class="fact-text">{{currentFact.funFact}}</p>
             <div class="fact-stats">
-              <span class="stat">📏 {{currentFact.weight}}</span>
-              <span class="stat">⏰ {{currentFact.lifespan}}</span>
+              <span class="stat" *ngIf="currentFact.characteristics?.weight">📏 {{currentFact.characteristics.weight}}</span>
+              <span class="stat" *ngIf="currentFact.characteristics?.lifespan">⏰ {{currentFact.characteristics.lifespan}}</span>
+              <span class="stat" *ngIf="currentFact.characteristics?.diet">🍽️ {{currentFact.characteristics.diet}}</span>
             </div>
           </div>
         </div>
@@ -127,7 +151,7 @@
         </button>
       </div>
       
-      <div class="fact-indicators">
+      <div class="fact-indicators" *ngIf="animalFacts.length > 0">
         <span 
           *ngFor="let fact of animalFacts; let i = index" 
           class="indicator"
