@@ -20,7 +20,12 @@ export class EndangeredAnimalPageComponent implements OnInit {
   constructor(private inaturalistService: InaturalistService) {}
 
   ngOnInit() {
-    const queries = ['elephant', 'tiger', 'panda', 'rhino', 'gorilla', 'orangutan', 'snow leopard', 'cheetah', 'jaguar', 'lion'];
+    const queries = ['elephant', 'tiger', 'lion', 'panda', 'koala', 'kangaroo', 'rhino', 'giraffe',
+  'gorilla', 'chimpanzee', 'orangutan', 'snow leopard', 'cheetah', 'jaguar',
+  'polar bear', 'grizzly bear', 'red panda', 'zebra', 'hippopotamus', 'crocodile',
+  'flamingo', 'peacock', 'wolf', 'fox', 'lynx', 'sloth', 'tapir', 'anteater',
+  'armadillo', 'capybara', 'otter', 'beaver', 'badger', 'hedgehog', 'platypus',
+  'emu', 'cassowary', 'lemur', 'wombat', 'bison', 'moose', 'caribou', 'reindeer'];
     queries.forEach(query => this.fetchThreatened(query));
   }
 
