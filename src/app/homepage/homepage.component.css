@@ -973,17 +973,23 @@
 }
 
 
+
 /* 💖 About Pretty Section */
 .about-pretty {
   padding: 5rem 2rem;
   background: linear-gradient(135deg, #ffffff, #e8f5f1);
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .about-wrapper {
   max-width: 1000px;
   margin: auto;
+  position: relative;
+  z-index: 2;
 }
+
 
 .about-heading {
   font-family: 'Playfair Display', serif;
@@ -1041,4 +1047,29 @@
 .about-card p {
   font-size: 0.95rem;
   color: #5a8d7e;
+}
+
+/* 🐾 Animal Footprint Decorations for About Section */
+.footprints-left,
+.footprints-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 80px;
+  background-repeat: repeat-y;
+  background-size: 60px auto;
+  opacity: 0.15;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.footprints-left {
+  left: 0;
+  background-image: url('/images/chicken.png'); /* make sure the file exists */
+}
+
+.footprints-right {
+  right: 0;
+  background-image: url('/images/chicken.png');
+  transform: scaleX(-1);
 }

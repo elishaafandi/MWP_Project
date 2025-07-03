@@ -1,16 +1,21 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { InteractiveMapComponent } from "../interactive-map/interactive-map.component";
+import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, InteractiveMapComponent],
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
+
+  constructor(private router: Router) {}
+
   
   allAnimals = [
     {
@@ -123,9 +128,9 @@ export class HomepageComponent {
   }
 
   onExploreClick() {
-    // Navigate to explore section or page
-    console.log('Exploring the wild...');
-  }
+  this.router.navigate(['/animal']);
+}
+
 
   onAnimalClick(animal: any) {
     // Navigate to animal details
@@ -133,9 +138,8 @@ export class HomepageComponent {
   }
 
   onViewMoreAnimals() {
-    // Navigate to animals page or show all animals
-    console.log('View more animals clicked');
-  }
+  this.router.navigate(['/endangered-animal']);
+}
 
   onJoinMission() {
   // Navigate to volunteer/donation page or show mission details
